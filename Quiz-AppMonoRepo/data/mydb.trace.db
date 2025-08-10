@@ -1,0 +1,3 @@
+2025-08-07 10:11:58.422784+05:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "QUIZ_ATTEMPTS" not found; SQL statement:
+select * from quiz_attempts [42102-232]
