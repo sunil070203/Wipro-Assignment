@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f6f8fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 30px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 900px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            text-decoration: none;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+        .action-btns a {
+            margin: 0 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .edit-icon {
+            color: #0062cc;
+        }
+
+        .delete-icon {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>All Student Data</h2>
+
+    <a href="/addStudent" class="btn">+ Add New Student</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>DOB</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="s : ${list}">
+                <td th:text="${s.rollno}"></td>
+                <td th:text="${s.name}"></td>
+                <td th:text="${s.age}"></td>
+                <td th:text="${s.email}"></td>
+                <td th:text="${s.address}"></td>
+                <td th:text="${s.dob}"></td>
+                <td class="action-btns">
+                    <a th:href="@{'/edit/' + ${s.rollno}}" class="edit-icon">Edit</a>
+                    <a th:href="@{'/delete/' + ${s.rollno}}" class="delete-icon">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+
