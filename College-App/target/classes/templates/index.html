@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+     <title >College Curd Application</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+      <h2> Add College here!</h2>
+      
+      <form th:action="@{/save}" th:object="${college}" method="post">
+           College Name:-<input type="text" th:field="*{collegeName}"><br>
+           College Email:-<input type="text" th:field="*{collegeEmail}"><br>
+           <button type="submit">Add</button>
+      </form>
+ 
+ 
+<h2> All Data College here!</h2>
+ 
+   <table border="1">
+      <tr>
+        <th>Id </th>
+        <th>College Name</th>
+        <th>College Mail </th>
+        <th>Action</th>
+      </tr>
+      
+      
+      <tr th:each="c:${list}">
+          <td th:text="${c.id}"></td>
+          <td th:text="${c.collegeName}"></td>
+          <td th:text="${c.collegeEmail}"></td>
+          
+          <td><a th:href="@{'/edit/'+${c.id}}"><i class="fa-solid fa-pen-to-square" style="color: #0300a3;"></i></a>
+          <a th:href="@{'/delete/'+${c.id}}"><i class="fa-solid fa-trash" style="color: #ff351f;"></i></a></td>
+      </tr>
+      
+      
+   </table>
+ 
+</body>
+</html>
+ 
